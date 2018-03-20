@@ -13,8 +13,8 @@ import nuxt from './nuxt'
 import session from './session'
 import passport from './passport'
 
-export default (app) => {
-  session(app)
+export default (app, dbConnection) => {
+  session(app, dbConnection)
   passport(app)
   parser(app)
   serve(app)

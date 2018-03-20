@@ -4,9 +4,14 @@ import wechatConfig from './config.wechat'
 import OAuth from 'wechat-oauth'
 const client = new OAuth(wechatConfig.appId, wechatConfig.appSecret)
 
-const createWechatOAuthUrl = function (cbUrlPath) {
-  return client.getAuthorizeURL(wechatConfig.host + '/auth/wechat?cb=' +
-    encodeURIComponent(wechatConfig.url + cbUrlPath), '1', 'snsapi_userinfo')
+const createWechatOAuthUrl = function(cbUrlPath) {
+  return client.getAuthorizeURL(
+    wechatConfig.host +
+      '/auth/wechat?cb=' +
+      encodeURIComponent(wechatConfig.url + cbUrlPath),
+    '1',
+    'snsapi_userinfo'
+  )
 }
 
 export default {
@@ -33,41 +38,41 @@ export default {
   subscribeMsg: '感谢您的关注',
   menuButton: {
     menu1: {
-      name: '我是家属'
+      name: '*'
     },
     menu2: {
-      name: '我是医生'
+      name: '*'
     },
     menu3: {
-      name: '微医院'
+      name: '*'
     },
     luntan: {
-      name: '医学论团',
-      url: 'http://www.anxinyi.cn'
+      name: '*',
+      url: '*'
     },
     jiuzhen: {
-      name: '预约就诊',
-      url: 'http://www.anxinyi.cn/wechat-hospital/#/tab/jiuzhen'
+      name: '*',
+      url: '*'
     },
     wode: {
-      name: '我的信息',
-      url: 'http://www.anxinyi.cn/wechat-hospital/#/tab/wode'
+      name: '*',
+      url: '*'
     },
     zhuye: {
-      name: '微主页',
-      url: 'http://www.anxinyi.cn/wechat-hospital/#/tab/zhuye'
+      name: '*',
+      url: '*'
     },
     doctorMe: {
-      name: '个人信息',
-      url: 'http://www.anxinyi.cn/axy/doctor'
+      name: '*',
+      url: '*'
     },
     familyMe: {
-      name: '个人信息',
-      url: 'http://www.anxinyi.cn/axy/family'
+      name: '*',
+      url: '*'
     },
     scanQR: {
-      name: '扫一扫',
-      url: createWechatOAuthUrl('/scanqrcode')
+      name: '*',
+      url: '*'
     }
   }
 }

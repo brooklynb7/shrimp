@@ -107,7 +107,7 @@ UserSchema.pre('save', function (next) {
  */
 UserSchema.methods.hashPassword = function (password) {
   if (this.salt && password) {
-    return crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64')
+    return crypto.pbkdf2Sync(password, this.salt, 10000, 64, null).toString('base64')
   } else {
     return password
   }
@@ -123,23 +123,19 @@ UserSchema.methods.authenticate = function (password) {
 /**
  * Find possible not used username
  */
-UserSchema.statics.findUniqueUsername = function (username, suffix, callback) {
-  let _this = this
-  let possibleUsername = username + (suffix || '')
+UserSchema.statics.findUniqueUsername = async function (username, suffix) {
+  const _this = this
+  const possibleUsername = username + (suffix || '')
 
-  _this.findOne({
+  const foundUser = await _this.findOne({
     username: possibleUsername
-  }, (err, user) => {
-    if (!err) {
-      if (!user) {
-        callback(possibleUsername)
-      } else {
-        return _this.findUniqueUsername(username, (suffix || 0) + 1, callback)
-      }
-    } else {
-      callback(null)
-    }
   })
+
+  if (!foundUser) {
+    return possibleUsername
+  } else {
+    return _this.findUniqueUsername(username, (suffix || 0) + 1)
+  }
 }
 
 export default {

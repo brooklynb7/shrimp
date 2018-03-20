@@ -1,11 +1,12 @@
 {
   "name": "shrimp",
   "version": "0.0.1",
-  "description": "Koa Nuxt Mongoose Vuetify Passport Wechat Single Port",
+  "description": "shrimp",
   "main": "server/index.js",
   "scripts": {
     "dev": "backpack dev",
     "build": "nuxt build && backpack build",
+    "buildKoa": "backpack build",
     "start": "cross-env NODE_ENV=production node build/main.js"
   },
   "repository": {
@@ -19,7 +20,9 @@
   },
   "homepage": "https://github.com/brooklynb7/shrimp#readme",
   "dependencies": {
+    "@nuxtjs/axios": "^5.1.1",
     "axios": "^0.18.0",
+    "bluebird": "^3.5.1",
     "chalk": "^2.3.2",
     "co-wechat": "^2.3.0",
     "co-wechat-api": "^3.3.4",
@@ -48,7 +51,7 @@
     "request": "^2.85.0",
     "request-promise": "^4.2.2",
     "require-directory": "^2.1.1",
-    "vuetify": "^1.0.7",
+    "vuetify": "^1.0.8",
     "wechat-oauth": "^1.2.1"
   },
   "devDependencies": {

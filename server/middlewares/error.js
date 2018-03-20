@@ -37,6 +37,7 @@ const error = async (ctx, next) => {
       pageNotFound(ctx)
     }
   } catch (err) {
+    // console.log(err)
     internalError(ctx)
     ctx.app.emit('error', err, ctx)
   }

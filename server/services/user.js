@@ -18,6 +18,10 @@ const queryUser = async () => {
   }
 }
 
+const findOne = async (searchOptions) => {
+  return User.findOne(searchOptions)
+}
+
 const findUserByUid = async (id) => {
   return User.findOne({
     _id: id
@@ -31,6 +35,16 @@ const findLocalUserByUserName = async (username) => {
   })
 }
 
+const findUniqueUsername = async (possibleUsername) => {
+  return User.findUniqueUsername(possibleUsername, null)
+}
+
+const addUser = async (userOptions) => {
+  const user = new User(userOptions)
+  const createdUser = await user.save()
+  return createdUser
+}
+
 export default {
-  queryUser, findLocalUserByUserName, findUserByUid
+  queryUser, findLocalUserByUserName, findUserByUid, findOne, findUniqueUsername, addUser
 }

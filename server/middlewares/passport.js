@@ -3,8 +3,9 @@
 /**
  * Module dependencies.
  */
-import passport from 'passport'
+import passport from 'koa-passport'
 import localStrategy from '../strategies/local'
+import wechatStrategy from '../strategies/wechat'
 import UserService from '../services/user'
 
 const init = () => {
@@ -16,7 +17,7 @@ const init = () => {
   // Deserialize sessions
   passport.deserializeUser(async (id, done) => {
     try {
-      const user = UserService.findUserByUid(id)
+      const user = await UserService.findUserByUid(id)
       done(null, user)
     } catch (err) {
       done(err)
@@ -24,6 +25,7 @@ const init = () => {
   })
 
   localStrategy.init()
+  wechatStrategy.init()
 }
 
 export default app => {

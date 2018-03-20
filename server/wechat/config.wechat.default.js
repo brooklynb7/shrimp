@@ -5,6 +5,6 @@ export default {
   appSecret: '',
   account: '',
   token: '',
-  url: 'http://www.anxinyi.cn/axy',
-  host: 'http://www.anxinyi.cn/axy'
+  url: '',
+  host: ''
 }

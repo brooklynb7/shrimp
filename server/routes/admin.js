@@ -4,7 +4,7 @@ import Router from 'koa-router'
 import admin from '../controllers/admin'
 
 const apiRouter = new Router({
-  prefix: '/api/admin'
+  prefix: '/api/admins'
 })
 
 export default app => {

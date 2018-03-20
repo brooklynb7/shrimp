@@ -104,7 +104,6 @@ const wechatMidConfig = {
 }
 
 const index = wechat(wechatMidConfig).middleware(async (message, ctx) => {
-  console.log(message)
   handler.message = message
   return handleMessage(handler)
 })
