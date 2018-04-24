@@ -15,10 +15,12 @@ const apiRouter = new Router({
 })
 
 const authRouter = new Router({
-  prefix: `${nuxtConfig.router.base}auth`
+  prefix: `${nuxtConfig.router.base}api/auth`
 })
 
 export default app => {
+  meApiRouter.get('/photos', AuthController.requireAuthApi, UserController.getMyPhotos)
+
   apiRouter.get('/default/add', UserController.addDefaultUser)
   apiRouter.get('/', AuthController.requireAdminAuthApi, UserController.queryUsers)
   apiRouter.put('/:id/isadmin', AuthController.requireAdminAuthApi, UserController.updateUserIsAdmin)

@@ -20,7 +20,7 @@ export default (app, dbConnection) => {
   serve(app)
   logger(app)
   apiJson(app)
+  error(app)
   routes(app)
   nuxt(app)
-  error(app)
 }

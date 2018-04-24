@@ -28,7 +28,7 @@ const addAdmin = async (adminData) => {
 }
 
 const findAdmin = async (query) => {
-  return Admin.findOne(query).select('-password').exec()
+  return Admin.findO(query).select('-password').exec()
 }
 
 export default {

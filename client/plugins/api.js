@@ -3,10 +3,10 @@
 const apiFactory = axios => ({
   /* Auth API */
   login ({ username, password }) {
-    return axios.$post('/auth/login', { username, password })
+    return axios.$post('/api/auth/login', { username, password })
   },
   loginAdmin ({ username, password }) {
-    return axios.$post('/auth/loginAdmin', { username, password })
+    return axios.$post('/api/auth/loginAdmin', { username, password })
   },
 
   /* Weixin API */
@@ -20,6 +20,9 @@ const apiFactory = axios => ({
   },
 
   /* Me API */
+  getMyPhotos () {
+    return axios.$get(`/api/me/photos`)
+  },
 
   /* User API */
   getUsers () {
