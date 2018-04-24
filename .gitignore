@@ -63,3 +63,5 @@ build/
 server/config/index.js
 server/wechat/config.wechat.js
 .DS_Store
+private.txt
+static/photos/

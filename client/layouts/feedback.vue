@@ -1,13 +1,11 @@
 <template lang="pug">
   v-app
-    v-toolbar(app,color="blue darken-2",dark,fixed)
-      v-toolbar-title 我是医生
+    v-toolbar(app,color="teal",dark,fixed)
+      v-toolbar-title {{$store.state.feedbackToolbarTitle}}
       v-spacer
       avatarName
     v-content
-      v-container(fluid,fill-height)
-        v-layout(align-content-start,justify-start)
-          nuxt
+      nuxt
 </template>
 
 <script>
@@ -18,6 +16,11 @@ export default {
 
   data: () => ({
     drawer: null
-  })
+  }),
+  methods: {
+    navToIndex() {
+      console.log('test')
+    }
+  }
 }
 </script>

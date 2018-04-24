@@ -4,11 +4,11 @@ import wechatConfig from './config.wechat'
 import OAuth from 'wechat-oauth'
 const client = new OAuth(wechatConfig.appId, wechatConfig.appSecret)
 
-const createWechatOAuthUrl = function(cbUrlPath) {
+const createWechatOAuthUrl = function (cbUrlPath) {
   return client.getAuthorizeURL(
     wechatConfig.host +
-      '/auth/wechat?cb=' +
-      encodeURIComponent(wechatConfig.url + cbUrlPath),
+    '/auth/wechat?cb=' +
+    encodeURIComponent(wechatConfig.url + cbUrlPath),
     '1',
     'snsapi_userinfo'
   )
@@ -38,41 +38,17 @@ export default {
   subscribeMsg: '感谢您的关注',
   menuButton: {
     menu1: {
-      name: '*'
+      name: 'menu1'
     },
     menu2: {
-      name: '*'
+      name: 'menu1'
     },
     menu3: {
-      name: '*'
+      name: 'menu3'
     },
-    luntan: {
-      name: '*',
-      url: '*'
-    },
-    jiuzhen: {
-      name: '*',
-      url: '*'
-    },
-    wode: {
-      name: '*',
-      url: '*'
-    },
-    zhuye: {
-      name: '*',
-      url: '*'
-    },
-    doctorMe: {
-      name: '*',
-      url: '*'
-    },
-    familyMe: {
-      name: '*',
-      url: '*'
-    },
-    scanQR: {
-      name: '*',
-      url: '*'
+    test: {
+      name: 'test',
+      url: createWechatOAuthUrl('/test')
     }
   }
 }

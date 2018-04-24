@@ -14,7 +14,7 @@ export default app => {
     if (status !== undefined) {
       console.log(`[${logTime}] ${method} ${status} ${apiPath} ${time} ${size}`)
     } else {
-      console.log(str)
+      // console.log(str)
     }
   }))
 }

@@ -1,15 +1,30 @@
 // https://nuxtjs.org/api/configuration-build
-// const baseUrl = process.env.NODE_ENV !== 'production' ? '/axy' : '/'
+const basePath = process.env.NODE_ENV === 'production' ? '/shrimp/' : '/'
+const host =
+  process.env.NODE_ENV === 'production'
+    ? 'http://www.shrimp.com'
+    : 'http://localhost:3030'
+const axiosPort = process.env.NODE_ENV === 'production' ? '80' : '3030'
+const axiosHost =
+  process.env.NODE_ENV === 'production' ? 'www.shrimp.com' : 'localhost'
+const axiosPrefix = process.env.NODE_ENV === 'production' ? '/shrimp' : '/'
 
 module.exports = {
+  router: {
+    base: basePath
+  },
   /*
   ** Headers of the page
   */
   head: {
-    title: 'shripm',
+    title: '安心易',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        name: 'viewport',
+        content:
+          'width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no'
+      },
       {
         hid: 'description',
         name: 'description',
@@ -17,22 +32,28 @@ module.exports = {
       }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/static/favicon.ico' },
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: `${basePath}static/favicon.ico`
+      },
       {
         rel: 'stylesheet',
         href:
           'https://fonts.loli.net/css?family=Roboto:300,400,500,700|Material+Icons'
       }
-    ]
+    ],
+    script: [{ src: 'http://res.wx.qq.com/open/js/jweixin-1.2.0.js' }]
   },
   srcDir: 'client/',
   env: {
-    HOST_URL: process.env.HOST_URL || 'http://127.0.0.1:3030'
+    basePath: basePath,
+    host: host
   },
   /*
   ** Global CSS
   */
-  plugins: ['~/plugins/vuetify.js'],
+  plugins: ['~/plugins/vuetify.js', '~/plugins/api.js'],
   css: ['~/assets/style/app.styl'],
   /*
   ** Customize the progress bar color
@@ -42,13 +63,15 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ['~/plugins/vuetify.js'],
+    vendor: ['~/plugins/vuetify.js', '~/plugins/api.js'],
     extractCSS: true
   },
   modules: ['@nuxtjs/axios'],
 
   axios: {
-    port: 3030
+    port: axiosPort,
+    host: axiosHost,
+    prefix: axiosPrefix
     // proxyHeaders: false
   }
 }

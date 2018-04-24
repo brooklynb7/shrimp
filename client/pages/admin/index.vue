@@ -1,5 +1,5 @@
 <template lang="pug">
-  h1 后台管理
+  h2 行政管理
 </template>
 
 <script>

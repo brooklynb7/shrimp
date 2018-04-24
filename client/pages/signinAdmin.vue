@@ -5,15 +5,15 @@ v-app
       v-layout(justify-center align-center)
         v-flex(xs12 sm8 md4)
           v-card(class="elevation-12")
-            v-toolbar(dark,color="teal",justify-center)
-              v-toolbar-title(class="text-xs-center") 登录
+            v-toolbar(dark,color="primary",justify-center)
+              v-toolbar-title(class="text-xs-center") 管理员登录
             v-card-text
               v-form
-                v-text-field(prepend-icon="person", label="用户名", v-model="username", required, color="teal")
-                v-text-field(prepend-icon="lock",label="密码", v-model="password", type="password" required,color="teal")
+                v-text-field(prepend-icon="person", label="用户名", v-model="username", required, color="primary")
+                v-text-field(prepend-icon="lock",label="密码", v-model="password", type="password" required,color="primary")
             v-card-actions
               v-spacer
-              v-btn(:loading="loading",color="teal",dark, @click="login") 登录
+              v-btn(:loading="loading",color="primary",dark, @click="login") 登录
             v-flex(xs12)
               // p(class="error", dark, v-if="showError") {{ errorMsg }}
               v-alert(type="error", :value="showError") {{ errorMsg }}
@@ -32,7 +32,7 @@ export default {
     async login({ params, query, env }) {
       this.loading = true
       try {
-        await this.$store.dispatch('login', {
+        await this.$store.dispatch('loginAdmin', {
           username: this.username,
           password: this.password
         })

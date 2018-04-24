@@ -5,6 +5,7 @@
 <script>
 export default {
   layout: 'admin',
+  middleware: 'authAdmin',
   data: () => {
     return { name: 'world' }
   }

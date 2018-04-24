@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  h1 Hello {{ name }}!
+  h1 Hello {{ name }}!  
   nuxt-child
 </template>
 
@@ -9,6 +9,11 @@ export default {
   layout: 'index',
   data: () => {
     return { name: 'world' }
+  },
+  methods: {
+    test() {
+      console.log('test')
+    }
   }
 }
 </script>

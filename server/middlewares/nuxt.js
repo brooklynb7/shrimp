@@ -22,7 +22,12 @@ export default app => {
   // Hook Nuxt up!
   // https://github.com/nuxt-community/koa-template/blob/master/template/server/index.js
   app.use(async (ctx, next) => {
-    if (ctx.path.indexOf('/api') !== 0 && ctx.path.indexOf('/auth') !== 0) {
+    const basePath = nuxtConfig.router.base
+    if (
+      ctx.path.indexOf(`${basePath.substring(0, basePath.length - 1)}`) === 0 &&
+      ctx.path.indexOf(`${basePath}api`) !== 0 &&
+      ctx.path.indexOf(`${basePath}auth`) !== 0
+    ) {
       ctx.status = 200 // koa defaults to 404 when it sees that status is unset
       return new Promise((resolve, reject) => {
         ctx.res.on('close', resolve)
