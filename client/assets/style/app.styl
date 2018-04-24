@@ -2,3 +2,24 @@
 
 .page
   @extend .fade-transition
+
+html
+  overflow-y: auto;
+
+.user-item
+  > .list__tile
+    padding: 0 8px;
+    height: 60px;  
+    > .list__tile__avatar
+      min-width: 42px;
+
+.user-item-chip.chip--small
+  height: 20px;
+  position: absolute;
+  font-size: 12px;
+  right: 0;
+  top: 0;
+  margin-top: 6px;
+  margin-right: 8px;
+  .chip__content
+    padding: 0 6px;
